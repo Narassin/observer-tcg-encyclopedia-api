@@ -17,8 +17,12 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        $this->call([
+            CardSeeder::class,
+        ]);
+
         User::factory()->create([
-            'name' => 'Test User',
+            'name' => 'Test Observer',
             'email' => 'test@example.com',
         ]);
     }
