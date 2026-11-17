@@ -2,18 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CardController;
 
-Route::get('/cards', function () {
-    $cards = \App\Models\Card::all();
-    return response()->json($cards);
-});
-Route::get('/card/{id}', function ($id) {
-    $card = \App\Models\Card::find($id);
-    if (!$card) {
-        return response()->json(['error' => 'Card not found'], 404);
-    }
-    return response()->json($card);
-});
+Route::get('/cards', [App\Http\Controllers\CardController::class, 'index']);
+Route::get('/card/{id}', [App\Http\Controllers\CardController::class, 'show']);
 
 
 // Route::get('/user', function (Request $request) {
